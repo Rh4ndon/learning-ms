@@ -3,64 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LMS - Login</title>
+    <title>PE LMS - Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body class="pe-theme-bg">
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
             <div class="col-md-6 col-lg-5 animate__animated animate__fadeIn">
-                <div class="card shadow-lg">
+                <div class="card shadow-lg pe-theme-card">
                     <div class="card-body p-5">
                         <div class="text-center mb-4">
-                            <img src="https://via.placeholder.com/100" alt="Logo" class="img-fluid rounded-circle mb-3 animate__animated animate__bounceIn">
-                            <h2 class="fw-bold text-primary">Learning Management System</h2>
-                            <p class="text-muted">Sign in to access your account</p>
+                            <img src="https://img.icons8.com/color/96/000000/basketball.png" alt="PE Logo" class="img-fluid mb-3 animate__animated animate__bounceIn">
+                            <h2 class="fw-bold pe-theme-text">Physical Education LMS</h2>
+                            <p class="text-muted">Train your mind and body</p>
                         </div>
                         
                         <form id="loginForm">
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
+                                <label for="email" class="form-label">School ID</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                    <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                    <span class="input-group-text pe-theme-input"><i class="fas fa-id-card"></i></span>
+                                    <input type="text" class="form-control pe-theme-input" id="email" placeholder="e.g. 2023-001" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                    <span class="input-group-text pe-theme-input"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control pe-theme-input" id="password" placeholder="Password" required>
                                 </div>
                             </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="remember">
-                                <label class="form-check-label" for="remember">Remember me</label>
-                            </div>
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite animate__slower">
+                                <button type="submit" class="btn pe-theme-btn btn-lg animate__animated animate__pulse animate__infinite animate__slower">
                                     <i class="fas fa-sign-in-alt me-2"></i> Login
                                 </button>
                             </div>
                         </form>
                         
-                        <div class="text-center mt-3">
-                            <a href="#" class="text-decoration-none">Forgot password?</a>
-                        </div>
-                        
-                        <div class="login-options mt-4 pt-3 border-top">
+                         <div class="login-options mt-4 pt-3 border-top">
                             <p class="text-center text-muted">Or login as:</p>
                             <div class="d-flex justify-content-center gap-3">
-                                <a href="admin.html" class="btn btn-outline-dark btn-sm animate__animated animate__fadeInLeft">Admin</a>
-                                <a href="teacher.html" class="btn btn-outline-primary btn-sm animate__animated animate__fadeInUp">Teacher</a>
-                                <a href="student.html" class="btn btn-outline-success btn-sm animate__animated animate__fadeInRight">Student</a>
+                                <a href="teacher.html" class="btn btn-outline-success btn-sm animate__animated animate__fadeInUp">Teacher</a>
+                                <a href="student.html" class="btn btn-outline-info btn-sm animate__animated animate__fadeInRight">Student</a>
                             </div>
                         </div>
                     </div>
