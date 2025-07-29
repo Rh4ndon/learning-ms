@@ -1,4 +1,3 @@
-<!-- Session Check -->
 <?php include '../../controllers/sessions.php'; ?>
 
 <!-- Header -->
