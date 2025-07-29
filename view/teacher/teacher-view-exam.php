@@ -21,7 +21,7 @@
     }
 
     .exam-creation-container .creation-header {
-        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        background: linear-gradient(135deg, #2E7D32, #43A047);
         color: white;
         border-radius: 10px 10px 0 0 !important;
     }
@@ -77,50 +77,10 @@
         left: 100%;
     }
 
-    /* Sound Controls */
-    .creation-sound-control {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Achievement Notification */
-    .creation-achievement-notification {
-        position: fixed;
-        bottom: 80px;
-        right: 20px;
-        background: linear-gradient(135deg, #6e8efb, #a777e3);
-        color: white;
-        padding: 15px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        transform: translateX(200%);
-        transition: transform 0.5s ease;
-        display: flex;
-        align-items: center;
-        max-width: 300px;
-    }
-
-    .creation-achievement-notification.show {
-        transform: translateX(0);
-    }
-
     /* Exam cards */
     .exam-creation-container .exam-card {
         transition: all 0.3s ease;
-        border-left: 4px solid #6e8efb;
+        border-left: 4px solid #2E7D32;
     }
 
     .exam-creation-container .exam-card:hover {
@@ -139,7 +99,7 @@
 
     .creation-progress-bar {
         height: 100%;
-        background: linear-gradient(90deg, #4b6cb7, #182848);
+        background: linear-gradient(90deg, #2E7D32, #43A047);
         width: 0%;
         transition: width 1s ease;
     }
@@ -323,10 +283,7 @@
     </div>
 </div>
 
-<!-- Sound Control -->
-<div class="creation-sound-control" id="creationSoundControl" onclick="toggleCreationSound()">
-    <i class="fas fa-volume-up" id="creationSoundIcon"></i>
-</div>
+
 
 <!-- Achievement Notification -->
 <div class="creation-achievement-notification" id="creationAchievementNotification">
@@ -425,20 +382,6 @@
         creationSoundIcon.className = creationGameState.soundEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
     }
 
-    // Toggle sound
-    function toggleCreationSound() {
-        creationGameState.soundEnabled = !creationGameState.soundEnabled;
-
-        if (creationGameState.soundEnabled) {
-            creationSoundIcon.className = 'fas fa-volume-up';
-            creationBackgroundMusic.play().catch(e => console.log("Play failed:", e));
-        } else {
-            creationSoundIcon.className = 'fas fa-volume-mute';
-            creationBackgroundMusic.pause();
-        }
-
-        saveCreationGameState();
-    }
 
     // Play click sound
     function playClickSound() {
