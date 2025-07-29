@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PE LMS - Student</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* PE Theme Colors */
+        :root {
+            --pe-primary: #2E7D32;
+            /* Dark green */
+            --pe-secondary: #43A047;
+            /* Medium green */
+            --pe-accent: #FFC107;
+            /* Gold/yellow */
+            --pe-light: #E8F5E9;
+            /* Light green */
+            --pe-dark: #1B5E20;
+            /* Very dark green */
+            --pe-text: #2E7D32;
+            --pe-text-light: #E8F5E9;
+            --pe-badge: #43A047;
+            --pe-badge-alt: #00796B;
+            /* Teal */
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+
+        /* PE Theme Background */
+        .pe-theme-bg {
+            background-color: var(--pe-light);
+            background-image: linear-gradient(rgba(232, 245, 233, 0.9), rgba(232, 245, 233, 0.9)),
+                url('../assets/images/vecteezy_empty-school-gym-with-sports-equipment_16265476.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* PE Theme Text */
+        .pe-theme-text {
+            color: var(--pe-primary);
+        }
+
+        .pe-theme-text-light {
+            color: var(--pe-text-light);
+        }
+
+        .pe-theme-text-warning {
+            color: #FF8F00;
+            /* Darker yellow */
+        }
+
+        /* PE Theme Cards */
+        .pe-theme-card {
+            background-color: white;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.1);
+            transition: all 0.3s;
+        }
+
+        .pe-theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.15);
+        }
+
+        .pe-theme-card-alt {
+            background-color: white;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 121, 107, 0.1);
+            transition: all 0.3s;
+        }
+
+        .pe-theme-card-alt:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 121, 107, 0.15);
+        }
+
+        .pe-theme-card-header {
+            background-color: white;
+            border-bottom: 2px solid var(--pe-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pe-theme-card-header-alt {
+            background-color: white;
+            border-bottom: 2px solid var(--pe-badge-alt);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* PE Theme Buttons */
+        .pe-theme-btn {
+            background-color: var(--pe-primary);
+            color: white;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .pe-theme-btn:hover {
+            background-color: var(--pe-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .pe-theme-btn-outline {
+            background-color: transparent;
+            color: var(--pe-primary);
+            border: 1px solid var(--pe-primary);
+            transition: all 0.3s;
+        }
+
+        .pe-theme-btn-outline:hover {
+            background-color: var(--pe-primary);
+            color: white;
+        }
+
+        .pe-theme-btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .pe-theme-btn-alt {
+            background-color: var(--pe-badge-alt);
+            color: white;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .pe-theme-btn-alt:hover {
+            background-color: #00695C;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .pe-theme-btn-alt-outline {
+            background-color: transparent;
+            color: var(--pe-badge-alt);
+            border: 1px solid var(--pe-badge-alt);
+            transition: all 0.3s;
+        }
+
+        .pe-theme-btn-alt-outline:hover {
+            background-color: var(--pe-badge-alt);
+            color: white;
+        }
+
+        .pe-theme-btn-alt-warning {
+            background-color: #FF8F00;
+            color: white;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .pe-theme-btn-alt-warning:hover {
+            background-color: #E65100;
+            color: white;
+        }
+
+        /* PE Theme Sidebar */
+        .pe-theme-sidebar {
+            background-color: var(--pe-primary);
+            min-width: 250px;
+            max-width: 250px;
+            min-height: 100vh;
+            transition: all 0.3s;
+            position: fixed;
+            z-index: 1000;
+        }
+
+        .pe-theme-sidebar-alt {
+            background-color: var(--pe-badge-alt);
+            min-width: 250px;
+            max-width: 250px;
+            min-height: 100vh;
+            transition: all 0.3s;
+            position: fixed;
+            z-index: 1000;
+        }
+
+        .pe-theme-sidebar .sidebar-header,
+        .pe-theme-sidebar-alt .sidebar-header {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .pe-theme-sidebar ul.components,
+        .pe-theme-sidebar-alt ul.components {
+            padding: 20px 0;
+        }
+
+        .pe-theme-sidebar ul li a,
+        .pe-theme-sidebar-alt ul li a {
+            padding: 10px 15px;
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .pe-theme-sidebar ul li a:hover,
+        .pe-theme-sidebar-alt ul li a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .pe-theme-sidebar ul li.active>a,
+        .pe-theme-sidebar-alt ul li.active>a {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* PE Theme Navbar */
+        .pe-theme-navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(46, 125, 50, 0.1);
+        }
+
+        /* PE Theme Inputs */
+        .pe-theme-input {
+            border: 1px solid var(--pe-primary);
+            transition: all 0.3s;
+        }
+
+        .pe-theme-input:focus {
+            border-color: var(--pe-dark);
+            box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.25);
+        }
+
+        /* PE Theme Badges */
+        .pe-theme-badge {
+            background-color: var(--pe-badge);
+            color: white;
+        }
+
+        .pe-theme-badge-success {
+            background-color: var(--pe-primary);
+            color: white;
+        }
+
+        .pe-theme-badge-warning {
+            background-color: #FF8F00;
+            color: white;
+        }
+
+        .pe-theme-badge-alt {
+            background-color: var(--pe-badge-alt);
+            color: white;
+        }
+
+        .pe-theme-badge-alt-success {
+            background-color: #00897B;
+            color: white;
+        }
+
+        /* PE Theme List Group */
+        .pe-theme-list .list-group-item {
+            border-left: 3px solid var(--pe-primary);
+            margin-bottom: 5px;
+            transition: all 0.3s;
+        }
+
+        .pe-theme-list .list-group-item:hover {
+            border-left: 3px solid var(--pe-dark);
+            background-color: var(--pe-light);
+        }
+
+        /* PE Theme Table */
+        .pe-theme-table {
+            border-color: var(--pe-light);
+        }
+
+        .pe-theme-table thead th {
+            background-color: var(--pe-primary);
+            color: white;
+        }
+
+        .pe-theme-table tbody tr:hover {
+            background-color: var(--pe-light);
+        }
+
+        /* PE Theme Timeline */
+        .pe-theme-timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .pe-theme-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #dee2e6;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            left: -50px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            background-color: var(--pe-badge);
+        }
+
+        .timeline-panel {
+            position: relative;
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* PE Theme Alert */
+        .pe-theme-alert {
+            background-color: var(--pe-light);
+            border-left: 4px solid var(--pe-primary);
+            color: var(--pe-dark);
+        }
+
+        /* PE Theme Progress Bar */
+        .pe-theme-progress {
+            background-color: var(--pe-primary);
+        }
+
+        /* PE Theme Dropdown */
+        .pe-theme-dropdown {
+            border: 1px solid var(--pe-primary);
+        }
+
+        /* PE Theme Breadcrumb */
+        .pe-theme-breadcrumb {
+            background-color: transparent;
+        }
+
+        .pe-theme-breadcrumb .breadcrumb-item.active {
+            color: var(--pe-primary);
+        }
+
+        /* PE Theme Icons */
+        .pe-theme-icon {
+            color: var(--pe-primary);
+            opacity: 0.7;
+        }
+
+        .pe-theme-icon-alt {
+            color: var(--pe-badge-alt);
+            opacity: 0.7;
+        }
+
+        /* PE Theme Links */
+        .pe-theme-link {
+            color: var(--pe-primary);
+            transition: all 0.3s;
+        }
+
+        .pe-theme-link:hover {
+            color: var(--pe-dark);
+            text-decoration: underline;
+        }
+
+        .pe-theme-link-alt {
+            color: var(--pe-badge-alt);
+            transition: all 0.3s;
+        }
+
+        .pe-theme-link-alt:hover {
+            color: #00695C;
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .pe-theme-sidebar {
+                margin-left: -250px;
+            }
+
+            .pe-theme-sidebar.active {
+                margin-left: 0;
+            }
+
+            #content {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            #content.active {
+                width: calc(100% - 250px);
+                margin-left: 250px;
+            }
+        }
+
+        /* Custom Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<?php include '../../controllers/student-controller.php'; ?>
+
+<body class="pe-theme-bg">

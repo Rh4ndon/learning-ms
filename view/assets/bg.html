@@ -1,0 +1,129 @@
+<style>
+    /* Background Styles */
+    #space-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
+        animation: twinkle 5s infinite alternate;
+    }
+
+    .shooting-star {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+            0 0 0 8px rgba(255, 255, 255, 0.1),
+            0 0 20px rgba(255, 255, 255, 1);
+        animation: shooting 3s linear infinite;
+    }
+
+    @keyframes twinkle {
+        0% {
+            opacity: 0.3;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes shooting {
+        0% {
+            transform: translateX(0) translateY(0) rotate(45deg);
+            opacity: 1;
+        }
+
+        70% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateX(1000px) translateY(-1000px) rotate(45deg);
+            opacity: 0;
+        }
+    }
+</style>
+
+<div id="space-background"></div>
+
+<script>
+    // Background Initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        createSpaceBackground();
+    });
+
+    function createSpaceBackground() {
+        const space = document.getElementById('space-background');
+        if (!space) return;
+
+        const particleCount = Math.floor(window.innerWidth / 10);
+        const shootingStarCount = 3;
+
+        // Clear existing particles
+        space.innerHTML = '';
+
+        // Create stars
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+
+            const size = Math.random() * 2 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.opacity = Math.random();
+            particle.style.animationDuration = `${Math.random() * 5 + 3}s`;
+
+            space.appendChild(particle);
+        }
+
+        // Create shooting stars
+        for (let i = 0; i < shootingStarCount; i++) {
+            createShootingStar();
+            setInterval(createShootingStar, 3000);
+        }
+    }
+
+    function createShootingStar() {
+        const space = document.getElementById('space-background');
+        if (!space) return;
+
+        const shootingStar = document.createElement('div');
+        shootingStar.className = 'shooting-star';
+
+        if (Math.random() > 0.5) {
+            shootingStar.style.left = '0px';
+            shootingStar.style.top = `${Math.random() * 100}%`;
+        } else {
+            shootingStar.style.left = `${Math.random() * 100}%`;
+            shootingStar.style.top = '0px';
+        }
+
+        shootingStar.style.animationDelay = `${Math.random() * 2}s`;
+        space.appendChild(shootingStar);
+
+        setTimeout(() => {
+            shootingStar.remove();
+        }, 3000);
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        createSpaceBackground();
+    });
+</script>

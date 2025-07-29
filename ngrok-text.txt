@@ -1,0 +1,2 @@
+run ngrok http --url=enjoyed-shining-duck.ngrok-free.app 80
+open https://enjoyed-shining-duck.ngrok-free.app/gamified/
