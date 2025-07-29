@@ -1,3 +1,17 @@
+<?php
+session_start();
+// Check if the user is logged in
+if (isset($_SESSION['is_logged_in'])) {
+    // User is logged in, do nothing
+    if ($_SESSION['is_admin'] == 1) {
+        header('Location: view/teacher/teacher-dashboard.php');
+        exit();
+    } else {
+        header('Location: view/student/student-dashboard.php');
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,20 +163,7 @@
         }
     </style>
 </head>
-<?php
-session_start();
-// Check if the user is logged in
-if (isset($_SESSION['is_logged_in'])) {
-    // User is logged in, do nothing
-    if ($_SESSION['is_admin'] == 1) {
-        header('Location: view/teacher/teacher-dashboard.php');
-        exit();
-    } else {
-        header('Location: view/student/student-dashboard.php');
-        exit();
-    }
-}
-?>
+
 
 <body class="pe-theme-bg">
     <div class="container">
